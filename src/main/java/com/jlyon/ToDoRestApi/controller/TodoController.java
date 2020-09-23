@@ -3,26 +3,49 @@ package com.jlyon.ToDoRestApi.controller;
 import com.jlyon.ToDoRestApi.entity.Todo;
 import com.jlyon.ToDoRestApi.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController()
+@RequestMapping("/todo")
 public class TodoController {
 	@Autowired
 	private TodoService service;
 
 	// CREATE
 	@PostMapping
-	public Todo saveTodo(@RequestBody Todo newTodo) {
-		return service.create(newTodo);
-	}
-
-	@PostMapping
-	public List<Todo> saveTodos(@RequestBody List<Todo> newTodos) {
+	public List<Todo> createTodos(@RequestBody List<Todo> newTodos) {
 		return service.createAll(newTodos);
 	}
 
-	// https://youtu.be/IucFDX3RO9U?t=1352
-//	public List<Todo> getAll()
+	// READ
+	@GetMapping
+	public List<Todo> query(@RequestParam("subject") String subject) {
+		if (subject == null || subject.isBlank()) return service.getAll();
+
+		return (List<Todo>) service.getOneBySubject(subject);
+	}
+
+	@GetMapping("/{id}")
+	public Todo findById(@PathVariable Integer id) {
+		return service.getOneById(id);
+	}
+
+//	@GetMapping
+//	public Todo findBySubject(@RequestParam("subject") String subject) {
+//		return service.getOneBySubject(subject);
+//	}
+
+	// UPDATE
+	@PostMapping("/{id}")
+	public Todo updateTodo(@RequestBody Todo newTodo) {
+		return service.updateTodo(newTodo);
+	}
+
+	// DELETE
+	@DeleteMapping("/{id}")
+	public String deleteTodo(@PathVariable Integer id) {
+		return service.deleteTodo(id);
+	}
 }

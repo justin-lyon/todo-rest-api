@@ -14,10 +14,6 @@ public class TodoService {
 	private TodoRepository repository;
 
 	// CREATE
-	public Todo create(Todo newTodo) {
-		return repository.save(newTodo);
-	}
-
 	public List<Todo> createAll(List<Todo> newTodos) {
 		return repository.saveAll(newTodos);
 	}
@@ -31,8 +27,8 @@ public class TodoService {
 		return repository.findById(id).orElse(null);
 	}
 
-	public Todo getOneByName(String name) {
-		return repository.findOneByName(name);
+	public Todo getOneBySubject(String subject) {
+		return repository.findOneBySubject(subject);
 	}
 
 	// UPDATE
@@ -41,7 +37,7 @@ public class TodoService {
 		if (oldTodo == null) {
 			// TODO: Throw Up Nicely
 		}
-		return this.create(newTodo);
+		return repository.save(newTodo);
 	}
 
 	// DELETE
