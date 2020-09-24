@@ -1,10 +1,9 @@
-package com.jlyon.ToDoRestApi.service;
+package com.jlyon.todorestapi.service;
 
-import com.jlyon.ToDoRestApi.entity.Todo;
-import com.jlyon.ToDoRestApi.repository.TodoRepository;
+import com.jlyon.todorestapi.entity.Todo;
+import com.jlyon.todorestapi.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 

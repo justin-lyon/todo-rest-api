@@ -1,4 +1,4 @@
-package com.jlyon.ToDoRestApi.entity;
+package com.jlyon.todorestapi.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
