@@ -17,6 +17,11 @@ import javax.persistence.Table;
 @Table(name="todos")
 public class Todo {
 
+	public Todo(String subject, String description) {
+		this.subject = subject;
+		this.description = description;
+	}
+
 	public Integer getId() {
 		return id;
 	}

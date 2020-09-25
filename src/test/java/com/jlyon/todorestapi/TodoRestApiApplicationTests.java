@@ -1,4 +1,4 @@
-package com.jlyon.todoRestApi;
+package com.jlyon.todorestapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
